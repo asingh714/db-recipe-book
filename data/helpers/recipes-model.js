@@ -1,12 +1,11 @@
 const db = require("../dbConfig");
 
 module.exports = {
-  getRecipes,
-  addRecipe
+  getRecipes
 }
 
 function getRecipes() {
   return db("recipes")
-  .select("recipes.name as recipe", "dish.name as dish")
-  .join("dish", "dish.id", "recipes.dish_id")
+  .select("recipes.name as Recipe", "dishes.name as Dish")
+  .join("dishes", "dishes.id", "recipes.dish_id")
 }
