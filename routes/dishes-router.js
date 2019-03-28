@@ -32,4 +32,25 @@ router.post("/", (req, res) => {
   }
 });
 
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+
+  dishes
+    .getDish(id)
+    .then(dish => {
+      if (dish) {
+        res.status(200).json(dish);
+      } else {
+        res
+          .status(404)
+          .json({ error: "The dish with the specified ID does not exist. " });
+      }
+    })
+    .catch(error => {
+      res.status(500).json({
+        error: "The dish with the specified ID could not be retrieved."
+      });
+    });
+});
+
 module.exports = router;
