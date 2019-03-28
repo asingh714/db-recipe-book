@@ -26,7 +26,7 @@ router.post("/", (req, res) => {
       })
       .catch(error => {
         res.status(500).json({
-          error: "There was an error while saving the cohort to the database."
+          error: "There was an error while saving the dish to the database."
         });
       });
   }
